@@ -1,6 +1,7 @@
 package com.github.lucasdevrj.principal;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Principal {
     public static void main(String[] args) {
@@ -20,5 +21,9 @@ public class Principal {
         if (dataDoRecebimentoDoSalario.isBefore(dataDaPrimeiraParcela)) {
             System.out.println("Recebe salário antes da primeira fatura.");
         }
+
+        DateTimeFormatter formatadorDeData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        System.out.println("Data da compra formatada: " + dataDaCompra.format(formatadorDeData));
     }
 }
