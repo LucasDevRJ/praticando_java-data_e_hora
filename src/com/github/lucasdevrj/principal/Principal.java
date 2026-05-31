@@ -1,8 +1,6 @@
 package com.github.lucasdevrj.principal;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class Principal {
@@ -32,5 +30,20 @@ public class Principal {
         System.out.println("Data de outra compra: " + dataDeOutraCompra);
         ZonedDateTime dataDeOutraCompraNY = dataDeOutraCompra.withZoneSameInstant(ZoneId.of("America/New_York"));
         System.out.println("Data de outra compra em New York: " + dataDeOutraCompraNY);
+
+        LocalTime inicioDoExpediente = LocalTime.of(9, 0);
+        LocalTime fimDoExpediente = LocalTime.of(17, 30);
+        Duration duracaoDoExpediente = Duration.between(inicioDoExpediente, fimDoExpediente);
+        System.out.println("Duração do Expediente: " + duracaoDoExpediente.toHours() + " horas e "
+                + duracaoDoExpediente.toMinutesPart() + " minutos.");
+
+        LocalDate dataDoPagamento = LocalDate.parse("2026-10-30");
+        Period periodo = Period.between(dataDaCompra, dataDoPagamento);
+        int duracaoMesesParaDias = periodo.getMonths() * 30;
+        int duracaoDiasParaAno = periodo.getYears() * 356;
+        int duracaoDias = periodo.getDays();
+        int duracaoTotalEmDias = duracaoMesesParaDias + duracaoDiasParaAno + duracaoDias;
+
+        System.out.println("Diferença da data de compra e pagamento: " + duracaoTotalEmDias + " dias.");
     }
 }
