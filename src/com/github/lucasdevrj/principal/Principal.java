@@ -1,6 +1,8 @@
 package com.github.lucasdevrj.principal;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Principal {
@@ -25,5 +27,10 @@ public class Principal {
         DateTimeFormatter formatadorDeData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         System.out.println("Data da compra formatada: " + dataDaCompra.format(formatadorDeData));
+
+        ZonedDateTime dataDeOutraCompra = ZonedDateTime.now();
+        System.out.println("Data de outra compra: " + dataDeOutraCompra);
+        ZonedDateTime dataDeOutraCompraNY = dataDeOutraCompra.withZoneSameInstant(ZoneId.of("America/New_York"));
+        System.out.println("Data de outra compra em New York: " + dataDeOutraCompraNY);
     }
 }
